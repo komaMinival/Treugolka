@@ -1,0 +1,14 @@
+C:\Users\koma\source\repos\treugolka\treugolka\bin\Debug\treugolka.exe.config
+C:\Users\koma\source\repos\treugolka\treugolka\bin\Debug\treugolka.exe
+C:\Users\koma\source\repos\treugolka\treugolka\bin\Debug\treugolka.pdb
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\treugolka.csproj.AssemblyReference.cache
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\MainWindow.baml
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\MainWindow.g.cs
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\App.g.cs
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\treugolka_MarkupCompile.cache
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\treugolka.g.resources
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\treugolka.Properties.Resources.resources
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\treugolka.csproj.GenerateResource.cache
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\treugolka.csproj.CoreCompileInputs.cache
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\treugolka.exe
+C:\Users\koma\source\repos\treugolka\treugolka\obj\Debug\treugolka.pdb

@@ -1,47 +1,48 @@
 ﻿<Window x:Class="treugolka.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Triangle Checker" Height="400" Width="490">
+        Title="Triangle Checker" Height="500" Width="500">
     <Grid Background="#E6E6FA">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
-            <Grid Margin="0,10,0,0">
-                <TextBox x:Name="SideA" Width="200" Height="30" VerticalContentAlignment="Center" />
-                <TextBlock Text="Введите сторону A"
-                           Foreground="Gray"
-                           VerticalAlignment="Top"
-                           Margin="-61,10,66,0"
-                           IsHitTestVisible="False"
-                           x:Name="PlaceholderA"
-                           Visibility="Visible" />
-            </Grid>
+        <StackPanel x:Name="InputPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Visibility="Visible">
+            <TextBlock Text="Введите длины сторон треугольника"
+                       FontSize="16"
+                       Foreground="#4B0082"
+                       TextAlignment="Center"
+                       Margin="0,0,0,20" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                <TextBox x:Name="SideA" Width="60" Height="30" Margin="5" />
+                <TextBox x:Name="SideB" Width="60" Height="30" Margin="5" />
+                <TextBox x:Name="SideC" Width="60" Height="30" Margin="5" />
+            </StackPanel>
+            <Button x:Name="CheckButton" Content="Проверить"
+                    Click="CheckTriangle_Click"
+                    Width="150"
+                    Height="40"
+                    Background="#9370DB"
+                    Foreground="White"
+                    FontWeight="Bold" />
+        </StackPanel>
 
-            <Grid Margin="0,10,0,0">
-                <TextBox x:Name="SideB" Width="200" Height="30" VerticalContentAlignment="Center" />
-                <TextBlock Text="Введите сторону B"
-                           Foreground="Gray"
-                           VerticalAlignment="Center"
-                           Margin="-61,0,66,0"
-                           IsHitTestVisible="False"
-                           x:Name="PlaceholderB"
-                           Visibility="Visible" />
-            </Grid>
-
-            <Grid Margin="0,10,0,0">
-                <TextBox x:Name="SideC" Width="200" Height="30" VerticalContentAlignment="Center" />
-                <TextBlock Text="Введите сторону C"
-                           Foreground="Gray"
-                           VerticalAlignment="Top"
-                           Margin="-61,4,66,0"
-                           IsHitTestVisible="False"
-                           x:Name="PlaceholderC"
-                           Visibility="Visible" />
-            </Grid>
-
-            <Button Content="Проверить" Click="CheckTriangle_Click" Width="328" Height="30" Background="#9370DB" Foreground="White" Margin="0,20,0,0" />
-
-            <TextBlock x:Name="ResultText" Text="" Foreground="Black" FontSize="16" TextAlignment="Center" Margin="10" TextWrapping="Wrap" Height="70"/>
-
-            <Image x:Name="TriangleImage" Width="200" Height="200" Visibility="Collapsed" Margin="0,10,0,0" />
+        <StackPanel x:Name="ResultPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Visibility="Collapsed">
+            <TextBlock x:Name="ResultText"
+                       Text=""
+                       FontSize="16"
+                       Foreground="#4B0082"
+                       TextAlignment="Center"
+                       Margin="0,0,0,20"
+                       TextWrapping="Wrap" />
+            <Image x:Name="TriangleImage"
+                   Width="250"
+                   Height="250"
+                   Visibility="Collapsed"
+                   Margin="0,0,0,20" />
+            <Button Content="Начать сначала"
+                    Click="Reset_Click"
+                    Width="150"
+                    Height="40"
+                    Background="#9370DB"
+                    Foreground="White"
+                    FontWeight="Bold" />
         </StackPanel>
     </Grid>
 </Window>

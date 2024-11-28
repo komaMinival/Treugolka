@@ -13,43 +13,95 @@ namespace treugolka
 
         private void CheckTriangle_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(SideA.Text, out double a) &&
-                double.TryParse(SideB.Text, out double b) &&
-                double.TryParse(SideC.Text, out double c))
+            if (int.TryParse(SideA.Text, out int a) &&
+                int.TryParse(SideB.Text, out int b) &&
+                int.TryParse(SideC.Text, out int c))
             {
-                TriangleImage.Visibility = Visibility.Collapsed;
-
-                if (a + b > c && a + c > b && b + c > a)
+                if (a > 0 && b > 0 && c > 0)
                 {
-                    string type;
-                    if (a == b && b == c)
+
+                    if (a + b > c && a + c > b && b + c > a)
                     {
-                        type = "Равносторонний";
-                        TriangleImage.Source = new BitmapImage(new Uri("Images/equilateral.png", UriKind.Relative));
-                    }
-                    else if (a == b || b == c || a == c)
-                    {
-                        type = "Равнобедренный";
-                        TriangleImage.Source = new BitmapImage(new Uri("Images/isosceles.png", UriKind.Relative));
+                        string type;
+                        string imagePath;
+                        if (a == b && b == c)
+                        {
+                            type = "равносторонний";
+                            imagePath = "Images/equilateral.png";
+                        }
+                        else if (a == b || b == c || a == c)
+                        {
+                            type = "равнобедренный";
+                            imagePath = "Images/isosceles.png";
+                        }
+                        else
+                        {
+                            type = "разносторонний";
+                            imagePath = "Images/scalene.png";
+                        }
+
+                        ResultText.Text = $"Полученный треугольник: {type}.";
+                        SetTriangleImage(imagePath);
+                        SwitchToResultView();
                     }
                     else
                     {
-                        type = "Разносторонний";
-                        TriangleImage.Source = new BitmapImage(new Uri("Images/scalene.png", UriKind.Relative));
+                        ResultText.Text = "Ошибка: треугольник с такими сторонами не существует.";
+                        TriangleImage.Visibility = Visibility.Collapsed;
+                        SwitchToResultView();
                     }
-
-                    ResultText.Text = $"Полученный треугольник: {type}.";
-                    TriangleImage.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    ResultText.Text = "Ошибка: треугольник с такими сторонами не существует.";
+                    ResultText.Text = "Ошибка: длины сторон должны быть больше 0.";
+                    TriangleImage.Visibility = Visibility.Collapsed;
+                    SwitchToResultView();
                 }
             }
             else
             {
-                ResultText.Text = "Ошибка: введите корректные числовые значения для всех сторон.";
+                ResultText.Text = "Ошибка: введите корректные целые значения сторон.";
+                TriangleImage.Visibility = Visibility.Collapsed;
+                SwitchToResultView();
             }
+        }
+
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            SideA.Text = string.Empty;
+            SideB.Text = string.Empty;
+            SideC.Text = string.Empty;
+
+            TriangleImage.Visibility = Visibility.Collapsed;
+
+            SwitchToInputView();
+        }
+
+        private void SetTriangleImage(string imagePath)
+        {
+            try
+            {
+                TriangleImage.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
+                TriangleImage.Visibility = Visibility.Visible;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки изображения: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                TriangleImage.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void SwitchToResultView()
+        {
+            InputPanel.Visibility = Visibility.Collapsed;
+            ResultPanel.Visibility = Visibility.Visible;
+        }
+
+        private void SwitchToInputView()
+        {
+            InputPanel.Visibility = Visibility.Visible;
+            ResultPanel.Visibility = Visibility.Collapsed;
         }
     }
 }
+
